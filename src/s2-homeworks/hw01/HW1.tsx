@@ -36,7 +36,7 @@ export const message0: MessageType = {
     },
     message: {
         text: 'Pichy pismo tebe', // можно менять
-        time: 'Vremyz zajigat', // можно менять
+        time: 'Vremya zajigat', // можно менять
     },
 }
 export const friendMessage0: MessageType = {

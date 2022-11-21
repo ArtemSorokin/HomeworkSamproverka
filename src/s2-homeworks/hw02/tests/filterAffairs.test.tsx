@@ -18,6 +18,7 @@ test('filter by all', () => {
     expect(newState.length).toBe(5)
 })
 test('filter by high', () => {
+
     const newState = filterAffairs(initialState, 'high')
     expect(newState.length).toBe(2)
 })

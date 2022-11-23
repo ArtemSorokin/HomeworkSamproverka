@@ -2,14 +2,14 @@ import React, {ChangeEvent, KeyboardEvent} from 'react'
 import s from './Greeting.module.css'
 
 type GreetingPropsType = {
-    name: any // need to fix any
+    name: string
     setNameCallback: any // need to fix any
-    addUser: any // need to fix any
+    addUser: ()=>void
     onBlur: any // need to fix any
     onEnter: any // need to fix any
     error: any // need to fix any
-    totalUsers: any // need to fix any
-    lastUserName?: any // need to fix any
+    totalUsers: number
+    lastUserName?: string
 }
 
 // презентационная компонента (для верстальщика)

@@ -7,15 +7,23 @@ type GreetingContainerPropsType = {
     addUserCallback: (name:string)=>void
 }
 
-export const pureAddUser = (name: string, setError: any, setName: any, addUserCallback: Function) => {
+export const pureAddUser = (name: string, setError: any, setName: Function, addUserCallback: Function) => {
     // если имя пустое - показать ошибку, иначе - добавить юзера и очистить инпут
-    addUserCallback(name)
+    debugger
+    let trimedName = name.trim()
+    if(trimedName === '') {
+        setError('Ошибка! Введите имя!')
+    } else {
+        addUserCallback(name)
+
+    }
+
 }
 
-export const pureOnBlur = (name: any, setError: any) => { // если имя пустое - показать ошибку
+export const pureOnBlur = (name: string, setError: Function) => { // если имя пустое - показать ошибку
 }
 
-export const pureOnEnter = (e: any, addUser: any) => { // если нажата кнопка Enter - добавить
+export const pureOnEnter = (e: any, addUser: Function) => { // если нажата кнопка Enter - добавить
 }
 
 // более простой и понятный для новичков
@@ -27,16 +35,22 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
     addUserCallback,
 }) => {
     // деструктуризация пропсов
-    const [name, setName] = useState<any>('') // need to fix any
-    const [error, setError] = useState<any>('') // need to fix any
+    const [name, setName] = useState<string>('') // need to fix any
+    const [error, setError] = useState<string>('') // need to fix any
+    let addedUsername;
 
-    const setNameCallback = (e: any) => { // need to fix any
-        setName('some name') // need to fix
+    const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => { // need to fix any
+        let trimed = e.currentTarget.value.trim()
+        if(trimed){ setName(trimed)
 
-        error && setError('')
+        } else {
+            error && setError(error)
+        }
     }
     const addUser = () => {
+        debugger
         pureAddUser(name, setError, setName, addUserCallback)
+        setName('')
     }
 
     const onBlur = () => {
@@ -47,8 +61,22 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
         pureOnEnter(e, addUser)
     }
 
-    const totalUsers = 0 // need to fix
-    const lastUserName = 'some name' // need to fix
+    const totalUsers = users.length
+    // name? users[users.length].name: 'no name'
+    // users.length > 0? users[users.length].name: 'no name'
+
+    // users.map( (u)=> {
+    //     if(totalUsers === 0){
+    //         return 'no name'
+    //     } else if(totalUsers === 1) {
+    //         return  u.name
+    //     } else if (totalUsers > 1){
+    //         return users[totalUsers].name
+    //     } else  return 'no name'
+    // })
+
+// let newNameLastElement =
+    const lastUserName = users.slice(-1).map(u=>u.name)// need to fix
 
     return (
         <Greeting

@@ -3,13 +3,13 @@ import s from './Greeting.module.css'
 
 type GreetingPropsType = {
     name: string
-    setNameCallback: any // need to fix any
+    setNameCallback: (e: ChangeEvent<HTMLInputElement>)=>void // need to fix any
     addUser: ()=>void
     onBlur: any // need to fix any
     onEnter: any // need to fix any
-    error: any // need to fix any
+    error: string // need to fix any
     totalUsers: number
-    lastUserName?: string
+    lastUserName?: string[]
 }
 
 // презентационная компонента (для верстальщика)
@@ -25,7 +25,7 @@ const Greeting: React.FC<GreetingPropsType> = (
         lastUserName,
     } // деструктуризация пропсов
 ) => {
-    const inputClass = s.errorInput // need to fix with (?:)
+    const inputClass = error && s.errorInput // need to fix with (?:)
 
     return (
         <div id={'hw3-form'} className={s.greetingForm}>

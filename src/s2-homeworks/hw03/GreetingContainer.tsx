@@ -1,4 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent, KeyboardEventHandler, useState} from 'react'
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react'
 import Greeting from './Greeting'
 import {UserType} from './HW3'
 
@@ -9,7 +9,7 @@ type GreetingContainerPropsType = {
 
 export const pureAddUser = (name: string, setError: any, setName: Function, addUserCallback: Function) => {
 
-    let trimedName = name.trim()
+    let trimedName = ` ' ' ${name.trim()} ' ' `
     if (trimedName === '') {
         setError('Ошибка! Введите имя!')
     } else {
@@ -47,10 +47,7 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
             setName(inputValue)
             setError(' ')
 
-        } else if (error !== '') {
-            // error && setError(error)
-            setError('Ошибка! Введите имя!')
-        }
+        } else return
     }
     const addUser = () => {
         debugger

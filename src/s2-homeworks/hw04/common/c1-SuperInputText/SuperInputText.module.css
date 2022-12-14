@@ -1,20 +1,28 @@
 .input:focus {
+
 }
 
 .input {
+    border-color: #0059b3;
 }
 
 .inputWrapper {
+
 }
 
 .superInput {
+    border-radius: 300px;
+
+
 }
 
 .errorInput {
+background-color: #cc0000;
 }
 
 .errorInput:focus {
 }
 
 .error {
+
 }

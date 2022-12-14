@@ -1,22 +1,30 @@
 .button {
+
 }
 
 .disabled {
+    border-radius: 300px;
 }
 
 .secondary {
+    background-color: #00cc22;
+
 }
 
 .default {
+    background-color: #cc9c00;
 }
 
 .red {
+    background-color: #cc0000;
 }
 
 .default:hover {
+
 }
 
 .red:hover {
+
 }
 
 .secondary:hover {
@@ -33,4 +41,9 @@
 }
 
 .button:disabled {
+
+}
+
+.styleFromUser  {
+    background-color: black;
 }

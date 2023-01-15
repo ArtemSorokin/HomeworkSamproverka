@@ -1,7 +1,10 @@
 .sidebar {
+
 }
 
 .sidebar.open {
+    display: none;
+
 }
 
 .background {
@@ -9,6 +12,8 @@
 }
 
 .nav {
+
+
 }
 
 .nav a {
@@ -21,7 +26,10 @@
     color: #00cc22;
 }
 .close {
+
 }
 
 .close img {
+
 }
+

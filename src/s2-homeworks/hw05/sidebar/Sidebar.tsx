@@ -13,7 +13,7 @@ export const Sidebar: FC<PropsType> = ({open, handleClose}) => {
    let active = (navigation: {isActive:boolean} ) =>navigation.isActive? s.active : s.sidebar
 
     const sidebarClass = s.sidebar
-        + (open ? ' ' + s.open : '')
+        + (open ? ' ' + s.open : '' )
     return (
 
         <>

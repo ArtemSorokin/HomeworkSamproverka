@@ -17,34 +17,31 @@ function Clock() {
 
 
     const start = () => {
-        debugger
-        let newDate = new Date()
-        newDate.setMinutes(newDate.getMinutes() - newDate.getMinutes() +1)
 
-        // let dateNew = ()=> {
-        //     let date = new Date()
-        //     date.setMinutes( date.setMinutes(date.getMinutes() + 1))
-        //     return date
-        // }
-        // console.log(dateNew)
 
-        // @ts-ignore
-        let timerId = setInterval(() => setDate(newDate.setMinutes(newDate.getMinutes() + 1)), 1000) ;
-        setTimeout(() => { clearInterval(timerId); // @ts-ignore
-            setDate(newDate.setMinutes(0)) }, 10000)
-        setTimerId(+timerId)
-        setActiveButton(!activeButton)
-        setstopButton(!stopButton)
+        let Id: number = +setInterval(() => setDate(new Date()), 1000) ;
+        setTimerId(Id)
+        // let newDate = new Date()
+        // newDate.setMinutes(newDate.getMinutes() - newDate.getMinutes() +1)
 
-        // пишут студенты // запустить часы (должно отображаться реальное время, а не +1)
-        // сохранить ид таймера (https://learn.javascript.ru/settimeout-setinterval#setinterval)
+        // // @ts-ignore
+        // let timerId = setInterval(() => setDate(newDate.setMinutes(newDate.getMinutes() + 1)), 60000) ;
+        // setTimeout(() => { clearInterval(timerId); // @ts-ignore
+        //     setDate(newDate.setMinutes(0)) }, 10000)
+        // setTimerId(+timerId)
+        // setActiveButton(!activeButton)
+        // setstopButton(!stopButton)
+        //
+
 
     }
 
     const stop = () => {
         clearTimeout(timerId)
-        setstopButton(!stopButton)
-        setActiveButton(!activeButton)
+        setTimerId(undefined)
+        // clearTimeout(timerId)
+        // setstopButton(!stopButton)
+        // setActiveButton(!activeButton)
 
         // пишут студенты // поставить часы на паузу, обнулить ид таймера (timerId <- undefined)
 
@@ -57,11 +54,13 @@ function Clock() {
         setShow(false)
     }
 
-    // const stringTime =  date.toLocaleTimeString() || <br/> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты
+    // const stringTime =  date.toLocaleTimeString('ru-Ru') || <br/> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты
     const stringTime = new Intl.DateTimeFormat('ru-Ru', {
         hour: "numeric",
-        minute: "numeric"
+        minute: "numeric",
+        second: 'numeric'
     }).format(date) || <br/> //
+
     // const stringDate =  date.toLocaleDateString()|| <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
     const stringDate = new Intl.DateTimeFormat('ru-RU', {
         day: 'numeric',
@@ -120,14 +119,14 @@ function Clock() {
             <div className={s.buttonsContainer}>
                 <SuperButton
                     id={'hw9-button-start'}
-                    disabled={activeButton} // пишут студенты // задизэйблить если таймер запущен
+                    disabled={!!timerId} // пишут студенты // задизэйблить если таймер запущен
                     onClick={start}
                 >
                     start
                 </SuperButton>
                 <SuperButton
                     id={'hw9-button-stop'}
-                    disabled={stopButton} // пишут студенты // задизэйблить если таймер не запущен
+                    disabled={!timerId} // пишут студенты // задизэйблить если таймер не запущен
                     onClick={stop}
                 >
                     stop

@@ -1,9 +1,24 @@
+import {Simulate} from "react-dom/test-utils";
+import copy = Simulate.copy;
+
 const initState = {
     themeId: 1,
 }
 
-export const themeReducer = (state = initState, action: any): any => { // fix any
+type actionType = {
+    type: string,
+    id:number
+}
+
+type initStateType = {
+    themeId:number
+}
+
+export const themeReducer = (state = initState, action: actionType): initStateType => { // fix any
     switch (action.type) {
+        case  'SET_THEME_ID':
+
+            return {...state, themeId: action.id}
         // дописать
 
         default:
